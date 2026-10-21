@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jedno pitanje za tebe ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb347, #ff7b00, #ffd199);
+      padding: 20px;
+    }
+
+    .card {
+      background: #fffaf4;
+      padding: 35px 22px;
+      border-radius: 25px;
+      text-align: center;
+      width: 100%;
+      max-width: 390px;
+      box-shadow: 0 10px 35px #9b450040;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: beat 1s infinite;
+    }
+
+    h1 {
+      color: #e87500;
+    }
+
+    p {
+      color: #795b45;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    button {
+      background: #ff8500;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 25px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      background: #e87500;
+    }
+
+    .no {
+      background: #ffe0bd;
+      color: #a94b00;
+    }
+
+    .no:hover {
+      background: #ffd09b;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .phone {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 15px 20px;
+      border-radius: 18px;
+      background: #ffead5;
+      color: #d96b00;
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #wrongMessage {
+      color: #e87500;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    @keyframes beat {
+      50% { transform: scale(1.12); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PRVA STRANA -->
+  <div class="card" id="firstPage">
+    <div class="heart">🧡</div>
+
+    <h1>Imam jedno pitanje...</h1>
+
+    <p>
+      I dalje mi mnogo značiš i voleo bih
+      da dobijemo još jednu šansu. 🥹
+    </p>
+
+    <h1>Da li hoćeš da se pomirimo? ❤️</h1>
+
+    <div class="buttons">
+      <button onclick="showPhone()">DA ❤️</button>
+      <button class="no" onclick="wrongAnswer()">NE 💔</button>
+    </div>
+
+    <div id="wrongMessage"></div>
+  </div>
+
+  <!-- DRUGA STRANA: DA -->
+  <div class="card hidden" id="secondPage">
+    <div class="heart">🧡</div>
+
+    <h1>Znao sam da me voliš! 🥹❤️</h1>
+
+    <p>
+      Hajde da pokušamo ponovo.
+      Mnogo mi značiš! 💕
+    </p>
+
+    <h1>Pozovi me ❤️</h1>
+
+    <a class="phone" href="tel:0665434316">
+      0665434316
+    </a>
+
+    <p>Čekam tvoj poziv. 🫶</p>
+
+    <div class="buttons">
+      <button class="no" onclick="goBack()">Vrati se ↩️</button>
+    </div>
+  </div>
+
+  <script>
+    function showPhone() {
+      document.getElementById("firstPage").classList.add("hidden");
+      document.getElementById("secondPage").classList.remove("hidden");
+    }
+
+    function wrongAnswer() {
+      document.getElementById("wrongMessage").innerHTML =
+        "Pogrešan odgovor! 😂🧡";
+
+      setTimeout(() => {
+        document.getElementById("wrongMessage").innerHTML = "";
+      }, 1800);
+    }
+
+    function goBack() {
+      document.getElementById("secondPage").classList.add("hidden");
+      document.getElementById("firstPage").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
